@@ -1,2 +1,14 @@
 venv/
-data/
+
+# Ignore everything under data/
+data/**
+
+# Allow directories to exist
+!data/
+!data/raw/
+!data/processed/
+
+# Allow the placeholder files
+!data/.gitkeep
+!data/raw/.gitkeep
+!data/processed/.gitkeep
