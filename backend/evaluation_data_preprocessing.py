@@ -1,10 +1,14 @@
+import json
 import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
-TOP_K = 10
-TEST_RATIO = 0.2
-RANDOM_SEED = 42
+with open("evaluation_config.json", "r") as f:
+    config = json.load(f)
+
+TOP_K = config["TOP_K"]
+TEST_RATIO = config["TEST_RATIO"]
+RANDOM_SEED = config["RANDOM_SEED"]
 
 user_item_matrix = pd.read_pickle('../data/processed/user_item_matrix.pkl')
 

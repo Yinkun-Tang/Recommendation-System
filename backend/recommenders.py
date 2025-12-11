@@ -38,8 +38,8 @@ class RecommenderBase:
         
 # User-Based Collaborative Filtering Recommender
 class UserBasedCFRecommender(RecommenderBase):
-    def __init__(self, top_k=10, alpha=1.0):
-        super().__init__()
+    def __init__(self, top_k=10, alpha=1.0, eval_mode=False):
+        super().__init__(eval_mode=eval_mode)
         self.top_k = top_k
         self.alpha = alpha
     
@@ -72,8 +72,8 @@ class UserBasedCFRecommender(RecommenderBase):
 
 # Item-Based Collaborative Filtering Recommender
 class ItemBasedCFRecommender(RecommenderBase):
-    def __init__(self, adjusted=False, top_k=10):
-        super().__init__()
+    def __init__(self, adjusted=False, top_k=10, eval_mode=False):
+        super().__init__(eval_mode=eval_mode)
         self.scores = None
         self.top_k = top_k
         self.sim_matrix = self.adjusted_item_similarity_matrix if adjusted else self.item_similarity_matrix
@@ -113,8 +113,8 @@ class ItemBasedCFRecommender(RecommenderBase):
 
 # Content-Based Recommender
 class ContentBasedRecommender(RecommenderBase):
-    def __init__(self, use_tfidf=False, top_k=10):
-        super().__init__()
+    def __init__(self, use_tfidf=False, top_k=10, eval_mode=False):
+        super().__init__(eval_mode=eval_mode)
         self.scores = None
         self.top_k = top_k
         self.sim_matrix = self.content_similarity_matrix_tfidf if use_tfidf else self.content_similarity_matrix_one_hot 
@@ -158,14 +158,14 @@ class ContentBasedRecommender(RecommenderBase):
 
 # Hybrid Recommender
 class HybridRecommender(RecommenderBase):
-    def __init__(self, alpha=0.8, top_k=10, candidate_factor=5):
-        super().__init__()
+    def __init__(self, alpha=0.8, top_k=10, candidate_factor=5, eval_mode=False):
+        super().__init__(eval_mode=eval_mode)
         self.alpha = alpha
         self.top_k = top_k
         self.candidate_factor = candidate_factor
         self.n_candidates = top_k * candidate_factor
-        self.item_cf = ItemBasedCFRecommender()
-        self.content_based = ContentBasedRecommender()
+        self.item_cf = ItemBasedCFRecommender(eval_mode=eval_mode)
+        self.content_based = ContentBasedRecommender(eval_mode=eval_mode)
     
     def recommend(self, user_id):
         if user_id not in self.user_item_matrix.index:
