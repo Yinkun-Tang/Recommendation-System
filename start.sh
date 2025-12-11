@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+WIN_CHROME="/mnt/c/Program Files/Google/Chrome/Application/chrome.exe"
+
 echo "Cleaning old processes..."
 fuser -k 8000/tcp || true
 fuser -k 5173/tcp || true
@@ -41,7 +43,7 @@ FRONTEND_PID=$!
 cd ..
 
 echo "[6/6] Opening browser..."
-xdg-open http://localhost:5173
+"$WIN_CHROME" "http://localhost:5173"
 
 echo "All services are running."
 echo "Backend PID: $BACKEND_PID"

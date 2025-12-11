@@ -38,7 +38,7 @@ The system supports an independent evaluation pipeline enabling offline experime
 or
 
 1. Before any operation, run ```data_preprocessing.py``` under the directory ```./backend```
-2. Under the root directory, run ```./start.sh``` to perform local environment cleaning, dependencies installation, and start both backend server and frontend interface. If the frontend fails to open automatically, please click the address presented in the terminal to enter the interface.
+2. Under the root directory, run ```./start.sh``` to perform local environment cleaning, dependencies installation, and start both backend server and frontend interface. Since chrome installation is assumed, if the frontend fails to open automatically, please click the address presented in the terminal to enter the interface.
 
 ## Usage - Methodologies Evaluation and Experiment
 
