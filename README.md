@@ -16,6 +16,7 @@ The system supports an independent evaluation pipeline enabling offline experime
 - `backend/` : Python backend including preprocessing, recommenders, evaluation.
 - `frontend/` : Frontend interface built with Node.js.
 - `data/` : Raw and processed dataset storage.
+- `documents/`: Complementary materials for viewers' reference.
 
 ## Prerequisites
 
@@ -29,24 +30,20 @@ The system supports an independent evaluation pipeline enabling offline experime
 
 1. Clone or download this repository.
 
-## Usage - Interactive Interface
+## Usage
+*Note: The usage procedure is verified on wsl environment with the assumption of chrome browser installation. Check shell script files for detailed implementations.*
 
-1. Before any operation, run ```data_preprocessing.py``` under the directory ```./backend```
-2. Under the root directory, run ```uvicorn backend.fast_api.main:app --reload``` to start the backend server
-3. Under the directory ```./frontend``` run command ```npm run dev``` to start the frontend interface
-
-or
-
-1. Before any operation, run ```data_preprocessing.py``` under the directory ```./backend```
-2. Under the root directory, run ```./start.sh``` to perform local environment cleaning, dependencies installation, and start both backend server and frontend interface. Since chrome installation and wsl running environment is assumed, if the frontend interface fails to launch automatically, please click the address presented in the terminal to enter the interface.
-
-## Usage - Methodologies Evaluation and Experiment
-
-1. Parameter choices and alternative preprocessing or computation strategies can be explored and adjusted in ```evaluation_config.json```
+### Streamlit
+*Note: Assume evaluation mode will be used. If not, feel free to ignore the first step, and running ```evaluation_data_preprocessing.py``` should not be executed for the second step*
+1. For model evaluation purpose, parameter choices and alternative preprocessing or computation strategies can be explored and adjusted in ```evaluation_config.json```
 2. When configuration is adjusted and confirmed, run ```data_preprocessing.py``` and ```evaluation_data_preprocessing.py``` under the directory ```./backend```
-3. After data preprocessing completes, run ```evaluation_pipeline.py``` under the directory ```./backend``` to check configured model(s) performance
+3. After data preprocessing completes, run ```start_st.sh``` under the root directory and follow hints or instructions on the interface
+
+### React Frontend Framework & FastAPI Backend Server
+*Note: Evaluation function is not included for this usage, and user_id is randomly selected each time for different recommenders. Different user_id choices can be explored via refreshing the page to randomly choose a new user_id*
+1. Before any operation, run ```data_preprocessing.py``` under the directory ```./backend```
+2. Under the root directory, run ```./start.sh``` to launch the interface
 
 ## Contributing
-
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
