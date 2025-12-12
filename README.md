@@ -42,7 +42,7 @@ The system supports an independent evaluation pipeline enabling offline experime
 ### React Frontend Framework & FastAPI Backend Server
 *Note: Evaluation function is not included for this usage, and user_id is randomly selected each time for different recommenders. Different user_id choices can be explored via refreshing the page to randomly choose a new user_id*
 1. Before any operation, run ```data_preprocessing.py``` under the directory ```./backend```
-2. Under the root directory, run ```./start.sh``` to launch the interface
+2. Under the root directory, run ```./start_dev.sh``` to launch the frontend interface
 
 ## Contributing
 
